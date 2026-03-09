@@ -8,12 +8,26 @@
   <meta name="description" content="Calculate your REAL hourly wage after commute, taxes, work clothes, and decompression time. Based on the Your Money or Your Life methodology. Then use decision calculators to know when to DIY and when to hire. Free, private, no signup.">
   <meta name="keywords" content="real hourly wage calculator, what is my time worth, your money or your life calculator, time value calculator, should I hire or DIY, is it worth my time">
   <link rel="canonical" href="https://whatismytimeworth.app/">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <meta property="og:title" content="What Is My Time Worth?">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="16x16"  href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32"  href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48"  href="/favicon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180"     href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="What Is My Time Worth?">
   <meta property="og:description" content="You think you earn $31/hour. After commute, taxes, and decompression, it's $19. Calculate yours.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://whatismytimeworth.app">
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://whatismytimeworth.app">
+  <meta property="og:image"       content="https://whatismytimeworth.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:image"      content="https://whatismytimeworth.app/og-image.png">
+
+  <!-- Structured data: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -27,6 +41,8 @@
     "author": { "@type": "Person", "name": "Kenneth Cross" }
   }
   </script>
+
+  <!-- Structured data: FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,7 +53,7 @@
         "name": "What is my real hourly wage?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Your real hourly wage is your annual take-home pay, minus all work-related expenses (commute, clothing, meals, childcare), divided by all work-related hours (including commute, getting ready, decompression, and unpaid overtime). Most people discover it's 30-50% lower than their advertised rate."
+          "text": "Your real hourly wage is your annual take-home pay, minus all work-related expenses (commute, clothing, meals, childcare), divided by all work-related hours (including commute, getting ready, decompression, and unpaid overtime). Most people discover it's 30–50% lower than their advertised rate."
         }
       },
       {
@@ -46,6 +62,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Multiply the hours the task would take you by your real hourly wage. Adjust for how much you enjoy or hate the task. Compare that adjusted cost to the price of hiring someone. If your adjusted time cost exceeds the hire price, pay someone else."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the self-employment tax rate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Employees pay 7.65% FICA (6.2% Social Security + 1.45% Medicare). Self-employed individuals pay both the employer and employee shares — 15.3% total. However, you can deduct half the self-employment tax on your federal return, reducing the effective rate slightly."
         }
       },
       {
@@ -67,17 +91,55 @@
     ]
   }
   </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5516736042033534" crossorigin="anonymous"></script>
 </head>
 <body>
   <noscript><p style="padding:2rem;text-align:center;color:#d8d4cc;font-family:Georgia,serif;">This calculator requires JavaScript to function. Please enable JavaScript in your browser settings.</p></noscript>
 
-  <aside class="ad-slot" id="ad-top">
-    <div class="ad-placeholder"><span class="ad-label">Ad&nbsp;Space</span></div>
+  <!-- ═══ LEFT RAIL AD (wide screens only) ═══ -->
+  <aside class="ad-rail ad-rail--left" aria-label="Advertisement">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5516736042033534"
+         data-ad-slot="8568993100"
+         data-ad-format="auto"
+         data-full-width-responsive="false"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </aside>
+
+  <!-- ═══ RIGHT RAIL AD (wide screens only) ═══ -->
+  <aside class="ad-rail ad-rail--right" aria-label="Advertisement">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5516736042033534"
+         data-ad-slot="2979965943"
+         data-ad-format="auto"
+         data-full-width-responsive="false"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </aside>
+
+  <!-- ═══ DONATION BAR (replaces top ad) ═══ -->
+  <div class="donation-bar">
+    <span class="donation-bar__label">Support this tool</span>
+    <a class="donation-bar__link" href="https://stygnus.substack.com" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M22.539 8.242H1.46V6h21.08v2.242zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.236h21.08V0z"/></svg>
+      Substack
+    </a>
+    <a class="donation-bar__link" href="https://ko-fi.com/stygnus" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      Ko-fi
+    </a>
+    <a class="donation-bar__link" href="https://buymeacoffee.com/stygnus" target="_blank" rel="noopener">
+      ☕ Buy Me a Coffee
+    </a>
+  </div>
 
   <header class="header">
     <div class="header__inner">
@@ -224,27 +286,84 @@
           <!-- Breakdown -->
           <div class="breakdown">
             <h3 class="breakdown__title">Full Breakdown</h3>
-            <div class="breakdown__row"><span>Gross annual salary</span><span id="bd-gross">—</span></div>
-            <div class="breakdown__row breakdown__row--sub"><span>Federal income tax</span><span id="bd-fed">—</span></div>
-            <div class="breakdown__row breakdown__row--sub"><span>State income tax</span><span id="bd-state">—</span></div>
-            <div class="breakdown__row breakdown__row--sub"><span>FICA (SS + Medicare)</span><span id="bd-fica">—</span></div>
-            <div class="breakdown__row breakdown__row--accent"><span>Total tax burden</span><span id="bd-tax-total">—</span></div>
-            <div class="breakdown__row"><span>Annual take-home</span><span id="bd-takehome">—</span></div>
+            <div class="breakdown__row">
+              <span>Gross annual salary <span class="tooltip" data-tip="Your total salary before any deductions — what your employer pays you.">ⓘ</span></span>
+              <span id="bd-gross">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--sub">
+              <span>Federal income tax <span class="tooltip" data-tip="Estimated using 2024/2025 IRS brackets and your filing status. Standard deduction applied.">ⓘ</span></span>
+              <span id="bd-fed">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--sub">
+              <span>State income tax <span class="tooltip" data-tip="Flat-rate state approximation. Varies by state — your actual rate may differ.">ⓘ</span></span>
+              <span id="bd-state">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--sub">
+              <span>FICA (SS + Medicare) <span class="tooltip" data-tip="Employee share: 6.2% Social Security (up to $176,100) + 1.45% Medicare. Self-employed pay 15.3% total.">ⓘ</span></span>
+              <span id="bd-fica">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--accent">
+              <span>Total tax burden <span class="tooltip" data-tip="Federal + state + FICA combined. Does not include 401(k) or health insurance — those reduce taxable income separately.">ⓘ</span></span>
+              <span id="bd-tax-total">—</span>
+            </div>
+            <div class="breakdown__row">
+              <span>Annual take-home <span class="tooltip" data-tip="Gross salary minus all taxes. This is what actually hits your bank account each year.">ⓘ</span></span>
+              <span id="bd-takehome">—</span>
+            </div>
             <div class="breakdown__divider"></div>
-            <div class="breakdown__row breakdown__row--sub"><span>Commute costs</span><span id="bd-commute">—</span></div>
-            <div class="breakdown__row breakdown__row--sub"><span>Work clothing</span><span id="bd-clothing">—</span></div>
-            <div class="breakdown__row breakdown__row--sub"><span>Work meals</span><span id="bd-meals">—</span></div>
-            <div class="breakdown__row breakdown__row--sub"><span>Childcare</span><span id="bd-childcare">—</span></div>
-            <div class="breakdown__row breakdown__row--sub"><span>Other costs</span><span id="bd-other">—</span></div>
-            <div class="breakdown__row breakdown__row--accent"><span>Total work costs</span><span id="bd-costs-total">—</span></div>
-            <div class="breakdown__row breakdown__row--total"><span>Actual annual earnings</span><span id="bd-actual">—</span></div>
+            <div class="breakdown__row breakdown__row--sub">
+              <span>Commute costs <span class="tooltip" data-tip="Daily commute cost × work days per year (after vacation/holidays/sick days).">ⓘ</span></span>
+              <span id="bd-commute">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--sub">
+              <span>Work clothing <span class="tooltip" data-tip="Monthly clothing cost × 12. Includes clothing you only buy because of work.">ⓘ</span></span>
+              <span id="bd-clothing">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--sub">
+              <span>Work meals <span class="tooltip" data-tip="Daily meal cost × work days per year. Only meals you wouldn't buy if you didn't work.">ⓘ</span></span>
+              <span id="bd-meals">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--sub">
+              <span>Childcare <span class="tooltip" data-tip="Monthly childcare × 12. Only childcare you need because you're at work.">ⓘ</span></span>
+              <span id="bd-childcare">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--sub">
+              <span>Other costs <span class="tooltip" data-tip="Other monthly work costs × 12. Professional dues, tools, second phone, continuing education.">ⓘ</span></span>
+              <span id="bd-other">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--accent">
+              <span>Total work costs <span class="tooltip" data-tip="Sum of all hidden money costs of employment. Subtracted from take-home to get actual earnings.">ⓘ</span></span>
+              <span id="bd-costs-total">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--total">
+              <span>Actual annual earnings <span class="tooltip" data-tip="Take-home pay minus all work-related expenses. This is what your job actually earns you.">ⓘ</span></span>
+              <span id="bd-actual">—</span>
+            </div>
             <div class="breakdown__divider"></div>
-            <div class="breakdown__row"><span>Contracted work hours</span><span id="bd-contracted-hrs">—</span></div>
-            <div class="breakdown__row breakdown__row--sub"><span>+ Commute time</span><span id="bd-commute-hrs">—</span></div>
-            <div class="breakdown__row breakdown__row--sub"><span>+ Getting-ready time</span><span id="bd-ready-hrs">—</span></div>
-            <div class="breakdown__row breakdown__row--sub"><span>+ Decompression time</span><span id="bd-decomp-hrs">—</span></div>
-            <div class="breakdown__row breakdown__row--sub"><span>+ Unpaid overtime</span><span id="bd-ot-hrs">—</span></div>
-            <div class="breakdown__row breakdown__row--total"><span>Total work-related hours/yr</span><span id="bd-total-hrs">—</span></div>
+            <div class="breakdown__row">
+              <span>Contracted work hours <span class="tooltip" data-tip="Hours/week × work days per year ÷ 5. Standard scheduled work time.">ⓘ</span></span>
+              <span id="bd-contracted-hrs">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--sub">
+              <span>+ Commute time <span class="tooltip" data-tip="Daily commute minutes ÷ 60 × work days per year. Time spent traveling to/from work.">ⓘ</span></span>
+              <span id="bd-commute-hrs">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--sub">
+              <span>+ Getting-ready time <span class="tooltip" data-tip="Daily getting-ready minutes ÷ 60 × work days per year. Time beyond your normal morning routine.">ⓘ</span></span>
+              <span id="bd-ready-hrs">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--sub">
+              <span>+ Decompression time <span class="tooltip" data-tip="Daily decompression minutes ÷ 60 × work days per year. Time spent unwinding because work drained you.">ⓘ</span></span>
+              <span id="bd-decomp-hrs">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--sub">
+              <span>+ Unpaid overtime <span class="tooltip" data-tip="Weekly unpaid overtime hours × weeks per year. After-hours emails, weekend Slack, Sunday planning.">ⓘ</span></span>
+              <span id="bd-ot-hrs">—</span>
+            </div>
+            <div class="breakdown__row breakdown__row--total">
+              <span>Total work-related hours/yr <span class="tooltip" data-tip="Every hour your job consumes — contracted + commute + prep + decompression + overtime. Divides into actual earnings to give your real wage.">ⓘ</span></span>
+              <span id="bd-total-hrs">—</span>
+            </div>
           </div>
 
           <div class="tax-warning">
@@ -396,23 +515,41 @@
     <section class="about">
       <h2 class="about__title">Why This Calculator Exists</h2>
       <p class="about__text">Most people have never calculated what an hour of their life is actually worth. Not their salary divided by 2,080 — their real take-home pay, minus every hidden cost of working, divided by every hour their job consumes. Commute time. Getting-ready time. Decompression time. Work lunches. Professional clothes. Once you know this number, every spending decision changes. A $40 dinner isn't $40 — it's X hours of your life energy.</p>
-      <p class="about__text about__text--dim">Methodology inspired by <em>Your Money or Your Life</em> by Vicki Robin & Joe Dominguez. Built by <a href="https://ko-fi.com/stygnus" target="_blank" rel="noopener">Kenneth Cross</a>. Everything runs in your browser. Nothing is sent anywhere. No signup required. Tax estimates are approximations — consult a CPA for your specific situation.</p>
+      <p class="about__text about__text--dim">Methodology inspired by <em>Your Money or Your Life</em> by Vicki Robin &amp; Joe Dominguez. Built by <a href="https://stygnus.substack.com" target="_blank" rel="noopener">Kenneth Cross</a>. Everything runs in your browser. Nothing is sent anywhere. No signup required. Tax estimates are approximations — consult a CPA for your specific situation.</p>
+      <p class="about__text about__text--dim">
+        <a href="/about/">About &amp; Privacy Policy</a> &nbsp;·&nbsp;
+        <a href="/faq/">FAQ</a> &nbsp;·&nbsp;
+        <a href="/blog/">Blog</a>
+      </p>
     </section>
   </main>
 
-  <aside class="ad-slot" id="ad-bottom">
-    <div class="ad-placeholder"><span class="ad-label">Ad&nbsp;Space</span></div>
+  <!-- ═══ BOTTOM BANNER AD ═══ -->
+  <aside class="ad-slot ad-slot--bottom" aria-label="Advertisement">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5516736042033534"
+         data-ad-slot="7057676288"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </aside>
 
   <footer class="footer">
     <div class="footer__links">
+      <a class="footer__link" href="https://stygnus.substack.com" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M22.539 8.242H1.46V6h21.08v2.242zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.236h21.08V0z"/></svg>
+        Substack
+      </a>
       <a class="footer__link footer__link--heart" href="https://ko-fi.com/stygnus" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         Ko-fi
       </a>
       <a class="footer__link" href="https://buymeacoffee.com/stygnus" target="_blank" rel="noopener">Buy Me a Coffee</a>
-      <a class="footer__link" href="https://stygnus.substack.com" target="_blank" rel="noopener">Substack</a>
       <a class="footer__link" href="https://github.com/thekensman/what-is-my-time-worth" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer__link" href="/about/">About</a>
+      <a class="footer__link" href="/faq/">FAQ</a>
+      <a class="footer__link" href="/blog/">Blog</a>
     </div>
     <p class="footer__copy">&copy; 2026 What Is My Time Worth? — Your numbers, your browser, your life.</p>
   </footer>
