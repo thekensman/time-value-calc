@@ -62,25 +62,22 @@ a:hover { text-decoration: underline; }
   padding: 8px 24px;
 }
 
-/* ─── Donation Bar ─── */
-.donation-bar {
+/* ─── Header Support Links ─── */
+.header__support {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 10px 24px;
-  background: rgba(212,164,78,0.05);
-  border-bottom: 1px solid rgba(212,164,78,0.12);
+  gap: 18px;
+  margin-top: 14px;
   flex-wrap: wrap;
 }
-.donation-bar__label {
+.header__support-label {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--text-muted);
 }
-.donation-bar__link {
+.header__support-link {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-dim);
@@ -90,7 +87,7 @@ a:hover { text-decoration: underline; }
   text-decoration: none;
   transition: color 0.15s;
 }
-.donation-bar__link:hover { color: var(--accent); text-decoration: none; }
+.header__support-link:hover { color: var(--accent); text-decoration: none; }
 
 /* ─── Header ─── */
 .header { border-bottom: 1px solid var(--border); padding: 36px 24px 28px; }
@@ -110,17 +107,19 @@ a:hover { text-decoration: underline; }
 .tabs {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 20px 24px 0;
+  padding: 24px 24px 0;
   display: flex;
-  gap: 4px;
+  gap: 6px;
   border-bottom: 1px solid var(--border);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.tabs::-webkit-scrollbar { display: none; }
 .tab {
   font-family: var(--font-mono);
-  font-size: 13px;
-  padding: 9px 18px 11px;
+  font-size: 14px;
+  padding: 12px 24px 14px;
   background: transparent;
   color: var(--text-dim);
   border: 1px solid transparent;
@@ -138,11 +137,11 @@ a:hover { text-decoration: underline; }
   border-bottom: 1px solid var(--bg-raised);
   margin-bottom: -1px;
 }
-.tab__icon { margin-right: 5px; }
+.tab__icon { margin-right: 6px; }
 
 /* ─── Main & Panels ─── */
 .main { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
-.panel { padding: 28px 0; display: none; }
+.panel { padding: 36px 0; display: none; }
 .panel--active { display: block; }
 .panel__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
 .panel__grid--jobs { grid-template-columns: 1fr 1fr; }

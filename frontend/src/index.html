@@ -125,22 +125,6 @@
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </aside>
 
-  <!-- ═══ DONATION BAR (replaces top ad) ═══ -->
-  <div class="donation-bar">
-    <span class="donation-bar__label">Support this tool</span>
-    <a class="donation-bar__link" href="https://stygnus.substack.com" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M22.539 8.242H1.46V6h21.08v2.242zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.236h21.08V0z"/></svg>
-      Substack
-    </a>
-    <a class="donation-bar__link" href="https://ko-fi.com/stygnus" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-      Ko-fi
-    </a>
-    <a class="donation-bar__link" href="https://buymeacoffee.com/stygnus" target="_blank" rel="noopener">
-      ☕ Buy Me a Coffee
-    </a>
-  </div>
-
   <header class="header">
     <div class="header__inner">
       <div class="header__brand">
@@ -148,6 +132,18 @@
         <h1 class="header__title">What Is My Time Worth?</h1>
       </div>
       <p class="header__tagline">Your salary says one thing. The math says another.</p>
+      <div class="header__support">
+        <span class="header__support-label">Support this free tool</span>
+        <a class="header__support-link" href="https://stygnus.substack.com" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M22.539 8.242H1.46V6h21.08v2.242zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.236h21.08V0z"/></svg>
+          Substack
+        </a>
+        <a class="header__support-link" href="https://ko-fi.com/stygnus" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          Ko-fi
+        </a>
+        <a class="header__support-link" href="https://buymeacoffee.com/stygnus" target="_blank" rel="noopener">☕ Buy Me a Coffee</a>
+      </div>
     </div>
   </header>
 
@@ -222,21 +218,23 @@
             <div class="input-group"><input type="number" id="w-overtime" value="3" min="0" step="0.5" data-calc="wage"><span class="input-suffix">hrs</span></div>
             <span class="field__hint">Emails after dinner, weekend Slack, "quick" Sunday planning.</span>
           </div>
+          <h2 class="card__title card__title--spaced">Work Schedule</h2>
+          <div class="field">
+            <label for="w-workdays">Days worked per week</label>
+            <div class="input-group"><input type="number" id="w-workdays" value="5" min="1" max="7" step="1" data-calc="wage"><span class="input-suffix">days</span></div>
+            <span class="field__hint">Use 4 for a 4-day week, 3 for part-time, etc.</span>
+          </div>
           <div class="field-row">
-            <div class="field">
-              <label for="w-workdays">Work days/week</label>
-              <div class="input-group"><input type="number" id="w-workdays" value="5" min="1" max="7" step="1" data-calc="wage"></div>
-            </div>
             <div class="field">
               <label for="w-vacation">Vacation days/yr</label>
               <div class="input-group"><input type="number" id="w-vacation" value="10" min="0" max="60" step="1" data-calc="wage"></div>
             </div>
-          </div>
-          <div class="field-row">
             <div class="field">
               <label for="w-holidays">Holidays/yr</label>
               <div class="input-group"><input type="number" id="w-holidays" value="8" min="0" max="20" step="1" data-calc="wage"></div>
             </div>
+          </div>
+          <div class="field-row">
             <div class="field">
               <label for="w-sick">Sick days/yr</label>
               <div class="input-group"><input type="number" id="w-sick" value="5" min="0" max="30" step="1" data-calc="wage"></div>
@@ -457,7 +455,10 @@
           <div class="field"><label for="ja-decomp">Decompression (daily min)</label><div class="input-group"><input type="number" id="ja-decomp" value="45" min="0" step="5" data-calc="compare"><span class="input-suffix">min</span></div></div>
           <div class="field"><label for="ja-overtime">Unpaid OT (weekly hrs)</label><div class="input-group"><input type="number" id="ja-overtime" value="3" min="0" step="0.5" data-calc="compare"><span class="input-suffix">hrs</span></div></div>
           <div class="field-row">
+            <div class="field"><label for="ja-workdays">Days/week</label><div class="input-group"><input type="number" id="ja-workdays" value="5" min="1" max="7" step="1" data-calc="compare"></div></div>
             <div class="field"><label for="ja-vacation">Vacation</label><div class="input-group"><input type="number" id="ja-vacation" value="10" min="0" max="60" data-calc="compare"></div></div>
+          </div>
+          <div class="field-row">
             <div class="field"><label for="ja-holidays">Holidays</label><div class="input-group"><input type="number" id="ja-holidays" value="8" min="0" max="20" data-calc="compare"></div></div>
             <div class="field"><label for="ja-sick">Sick</label><div class="input-group"><input type="number" id="ja-sick" value="5" min="0" max="30" data-calc="compare"></div></div>
           </div>
@@ -479,7 +480,10 @@
           <div class="field"><label for="jb-decomp">Decompression (daily min)</label><div class="input-group"><input type="number" id="jb-decomp" value="20" min="0" step="5" data-calc="compare"><span class="input-suffix">min</span></div></div>
           <div class="field"><label for="jb-overtime">Unpaid OT (weekly hrs)</label><div class="input-group"><input type="number" id="jb-overtime" value="1" min="0" step="0.5" data-calc="compare"><span class="input-suffix">hrs</span></div></div>
           <div class="field-row">
+            <div class="field"><label for="jb-workdays">Days/week</label><div class="input-group"><input type="number" id="jb-workdays" value="5" min="1" max="7" step="1" data-calc="compare"></div></div>
             <div class="field"><label for="jb-vacation">Vacation</label><div class="input-group"><input type="number" id="jb-vacation" value="15" min="0" max="60" data-calc="compare"></div></div>
+          </div>
+          <div class="field-row">
             <div class="field"><label for="jb-holidays">Holidays</label><div class="input-group"><input type="number" id="jb-holidays" value="10" min="0" max="20" data-calc="compare"></div></div>
             <div class="field"><label for="jb-sick">Sick</label><div class="input-group"><input type="number" id="jb-sick" value="5" min="0" max="30" data-calc="compare"></div></div>
           </div>
@@ -537,15 +541,6 @@
 
   <footer class="footer">
     <div class="footer__links">
-      <a class="footer__link" href="https://stygnus.substack.com" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M22.539 8.242H1.46V6h21.08v2.242zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.236h21.08V0z"/></svg>
-        Substack
-      </a>
-      <a class="footer__link footer__link--heart" href="https://ko-fi.com/stygnus" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        Ko-fi
-      </a>
-      <a class="footer__link" href="https://buymeacoffee.com/stygnus" target="_blank" rel="noopener">Buy Me a Coffee</a>
       <a class="footer__link" href="https://github.com/thekensman/what-is-my-time-worth" target="_blank" rel="noopener">GitHub</a>
       <a class="footer__link" href="/about/">About</a>
       <a class="footer__link" href="/faq/">FAQ</a>
