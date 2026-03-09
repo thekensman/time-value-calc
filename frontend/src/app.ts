@@ -263,6 +263,7 @@ function readJobInputs(prefix: string): JobInputs {
     dailyGetReadyMinutes: numVal(`${prefix}-ready`),
     dailyDecompressionMinutes: numVal(`${prefix}-decomp`),
     weeklyUnpaidOvertime: numVal(`${prefix}-overtime`),
+    workDaysPerWeek: numVal(`${prefix}-workdays`) || 5,
     vacationDays: numVal(`${prefix}-vacation`),
     holidays: numVal(`${prefix}-holidays`),
     sickDays: numVal(`${prefix}-sick`),

@@ -102,6 +102,7 @@ export interface JobInputs {
   dailyGetReadyMinutes: number;
   dailyDecompressionMinutes: number;
   weeklyUnpaidOvertime: number;
+  workDaysPerWeek: number;
   vacationDays: number;
   holidays: number;
   sickDays: number;
@@ -400,7 +401,7 @@ export function compareJobs(
     dailyGetReadyMinutes: job.dailyGetReadyMinutes,
     dailyDecompressionMinutes: job.dailyDecompressionMinutes,
     weeklyUnpaidOvertime: job.weeklyUnpaidOvertime,
-    workDaysPerWeek: 5,
+    workDaysPerWeek: job.workDaysPerWeek || 5,
     vacationDays: job.vacationDays,
     holidays: job.holidays,
     sickDays: job.sickDays,
