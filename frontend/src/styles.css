@@ -89,6 +89,30 @@ a:hover { text-decoration: underline; }
 }
 .header__support-link:hover { color: var(--accent); text-decoration: none; }
 
+/* ─── Header Site Nav ─── */
+.header__sitenav {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.header__sitenav a {
+  color: var(--text);
+  padding: 5px 10px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.header__sitenav a:hover {
+  color: var(--accent);
+  background: rgba(212, 164, 78, 0.08);
+  text-decoration: none;
+}
+
 /* ─── Header ─── */
 .header { border-bottom: 1px solid var(--border); padding: 36px 24px 28px; }
 .header__inner { max-width: var(--max-w); margin: 0 auto; }
@@ -504,6 +528,244 @@ select option { background: var(--bg-card); color: var(--text); }
 .footer__link:hover { color: var(--accent); }
 .footer__link--heart svg { color: var(--red); }
 .footer__copy { font-size: 11px; color: var(--text-muted); }
+
+/* ─── Collapsible Sections (Progressive Disclosure) ─── */
+.section-collapsible {
+  border-top: 1px solid var(--border);
+  margin-top: 18px;
+}
+.section-collapsible[open] { border-top-color: var(--accent); }
+
+.section-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 14px 0 10px;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  user-select: none;
+}
+.section-toggle::-webkit-details-marker { display: none; }
+.section-toggle::marker { display: none; }
+.section-toggle::before {
+  content: '▶';
+  font-size: 8px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+details[open] > .section-toggle::before { transform: rotate(90deg); }
+
+.section-toggle__summary {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: none;
+  color: var(--text-muted);
+}
+.section-toggle__optional { font-style: italic; }
+
+.section-content { padding-bottom: 6px; }
+
+.section-intro {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 14px;
+  font-style: italic;
+}
+
+/* ─── Breakdown (collapsible) ─── */
+details.breakdown { cursor: default; }
+details.breakdown > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0;
+  padding-bottom: 14px;
+  user-select: none;
+}
+details.breakdown > summary::-webkit-details-marker { display: none; }
+details.breakdown > summary::marker { display: none; }
+details.breakdown > summary::before {
+  content: '▶';
+  font-size: 8px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+details.breakdown[open] > summary::before { transform: rotate(90deg); }
+
+/* ─── Card header (Job B copy button) ─── */
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.card__header .card__title { margin-bottom: 0; }
+
+.copy-btn {
+  background: transparent;
+  border: 1px solid rgba(212,164,78,0.3);
+  color: var(--accent);
+  padding: 5px 10px;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.copy-btn:hover { background: rgba(212,164,78,0.1); border-color: var(--accent); }
+
+/* ─── Preset grid (12 tiles: 4 cols desktop) ─── */
+.preset-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+@media (max-width: 700px) { .preset-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 520px) { .preset-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ─── Life Energy Converter ─── */
+.energy-converter {
+  background: rgba(212,164,78,0.05);
+  border: 1px solid rgba(212,164,78,0.15);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-align: center;
+}
+.energy-converter__prompt {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  font-style: italic;
+}
+.energy-converter__input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 10px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  max-width: 160px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.energy-converter__input:focus-within { border-color: var(--border-focus); }
+.energy-converter__input input {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  padding: 8px 10px;
+  width: 100%;
+  outline: none;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.energy-converter__input input::-webkit-outer-spin-button,
+.energy-converter__input input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.energy-converter__output {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.energy-converter__output strong {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ─── Discretionary / Financial Reality card ─── */
+.result-card--financial {
+  background: rgba(212,164,78,0.04);
+  border-color: rgba(212,164,78,0.25) !important;
+}
+.result-card--financial .result-card__value { color: var(--accent); font-size: 28px; }
+
+.financial-stress {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: rgba(212,164,78,0.08);
+  text-align: left;
+}
+.financial-stress--comfortable { border-left-color: var(--green); background: rgba(107,189,122,0.08); }
+.financial-stress--stable      { border-left-color: var(--accent); background: rgba(212,164,78,0.08); }
+.financial-stress--stressed    { border-left-color: var(--orange); background: rgba(212,160,78,0.1); }
+.financial-stress--critical    { border-left-color: var(--red);    background: rgba(212,93,93,0.08); }
+.financial-stress__status {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.financial-stress--comfortable .financial-stress__status { color: var(--green); }
+.financial-stress--stable      .financial-stress__status { color: var(--accent); }
+.financial-stress--stressed    .financial-stress__status { color: var(--orange); }
+.financial-stress--critical    .financial-stress__status { color: var(--red); }
+.financial-stress__message { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* ─── Compare tab: sticky results on desktop ─── */
+@media (min-width: 1025px) {
+  .compare-results {
+    position: sticky;
+    top: 1.5rem;
+  }
+}
+
+/* ─── Compare tab: scroll-to-results (mobile) ─── */
+.scroll-to-results {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 10px 20px;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(212,164,78,0.3);
+  z-index: 100;
+  transition: opacity 0.15s;
+}
+.scroll-to-results:hover { opacity: 0.88; }
+@media (min-width: 1025px) { .scroll-to-results { display: none !important; } }
+
+/* ─── Support nudge ─── */
+.support-nudge {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(212,164,78,0.1);
+  text-align: center;
+}
+.support-nudge p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+}
+.support-nudge a { color: var(--accent); }
+.support-nudge a:hover { text-decoration: underline; }
 
 /* ─── Animations ─── */
 @media (prefers-reduced-motion: no-preference) {

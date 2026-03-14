@@ -325,13 +325,13 @@ describe("calculateDecision", () => {
     expect(result.savings).toBeCloseTo(35, 0);
   });
 
-  it("enjoyment 'hate' increases effective time cost by 50%", () => {
+  it("enjoyment 'avoid' increases effective time cost by 50%", () => {
     const result = calculateDecision({
       realHourlyWage: 20,
       taskDescription: "Taxes",
       hoursToComplete: 8,
       costToHire: 250,
-      enjoyment: "hate",
+      enjoyment: "avoid",
     });
     // 8 * 20 = $160, × 1.5 = $240 vs $250 → DIY by $10
     expect(result.adjustedTimeCost).toBeCloseTo(240, 0);

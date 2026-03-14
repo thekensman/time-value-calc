@@ -61,7 +61,7 @@
         "name": "How do I calculate if hiring someone is worth my time?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Multiply the hours the task would take you by your real hourly wage. Adjust for how much you enjoy or hate the task. Compare that adjusted cost to the price of hiring someone. If your adjusted time cost exceeds the hire price, pay someone else."
+          "text": "Multiply the hours the task would take you by your real hourly wage. Adjust for how much you enjoy or prefer to avoid the task. Compare that adjusted cost to the price of hiring someone. If your adjusted time cost exceeds the hire price, pay someone else."
         }
       },
       {
@@ -144,6 +144,14 @@
         </a>
         <a class="header__support-link" href="https://buymeacoffee.com/stygnus" target="_blank" rel="noopener">☕ Buy Me a Coffee</a>
       </div>
+      <nav class="header__sitenav" aria-label="Site navigation">
+        <a href="/blog/">Blog</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </nav>
     </div>
   </header>
 
@@ -157,6 +165,8 @@
     <!-- ═══ TAB 1: REAL HOURLY WAGE ═══ -->
     <section class="panel panel--active" id="panel-wage" role="tabpanel">
       <div class="panel__grid">
+
+        <!-- Inputs column -->
         <div class="card">
           <h2 class="card__title">Income</h2>
           <div class="field">
@@ -172,74 +182,146 @@
             <select id="w-state" data-calc="wage"></select>
           </div>
 
-          <h2 class="card__title card__title--spaced">Hidden Costs (Money)</h2>
-          <div class="field">
-            <label for="w-commute-cost">Daily commute cost</label>
-            <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-commute-cost" value="15" min="0" step="1" data-calc="wage"></div>
-            <span class="field__hint">IRS rate is $0.70/mile. 20 miles round-trip = $14/day.</span>
-          </div>
-          <div class="field">
-            <label for="w-clothing">Work clothing (monthly)</label>
-            <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-clothing" value="50" min="0" step="10" data-calc="wage"></div>
-          </div>
-          <div class="field">
-            <label for="w-meals">Work meals (daily)</label>
-            <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-meals" value="8" min="0" step="1" data-calc="wage"></div>
-            <span class="field__hint">Only meals you wouldn't buy if you didn't work.</span>
-          </div>
-          <div class="field">
-            <label for="w-childcare">Childcare during work (monthly)</label>
-            <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-childcare" value="0" min="0" step="50" data-calc="wage"></div>
-          </div>
-          <div class="field">
-            <label for="w-other-cost">Other work costs (monthly)</label>
-            <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-other-cost" value="0" min="0" step="10" data-calc="wage"></div>
-            <span class="field__hint">Professional dues, tools, continuing ed, second phone.</span>
-          </div>
+          <!-- Hidden Costs (Money) — starts open -->
+          <details class="section-collapsible" open>
+            <summary class="section-toggle">
+              Hidden Costs — Money
+              <span class="section-toggle__summary" id="section-money-summary"></span>
+            </summary>
+            <div class="section-content">
+              <div class="field">
+                <label for="w-commute-cost">Daily commute cost</label>
+                <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-commute-cost" value="15" min="0" step="1" data-calc="wage"></div>
+                <span class="field__hint">IRS rate is $0.70/mile. 20 miles round-trip = $14/day.</span>
+              </div>
+              <div class="field">
+                <label for="w-clothing">Work clothing (monthly)</label>
+                <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-clothing" value="50" min="0" step="10" data-calc="wage"></div>
+              </div>
+              <div class="field">
+                <label for="w-meals">Work meals (daily)</label>
+                <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-meals" value="8" min="0" step="1" data-calc="wage"></div>
+                <span class="field__hint">Only meals you wouldn't buy if you didn't work.</span>
+              </div>
+              <div class="field">
+                <label for="w-childcare">Childcare during work (monthly)</label>
+                <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-childcare" value="0" min="0" step="50" data-calc="wage"></div>
+              </div>
+              <div class="field">
+                <label for="w-other-cost">Other work costs (monthly)</label>
+                <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-other-cost" value="0" min="0" step="10" data-calc="wage"></div>
+                <span class="field__hint">Professional dues, tools, continuing ed, second phone.</span>
+              </div>
+            </div>
+          </details>
 
-          <h2 class="card__title card__title--spaced">Hidden Costs (Time)</h2>
-          <div class="field">
-            <label for="w-commute-time">Daily commute, round-trip</label>
-            <div class="input-group"><input type="number" id="w-commute-time" value="50" min="0" step="5" data-calc="wage"><span class="input-suffix">min</span></div>
-            <span class="field__hint">Include walking to/from car or transit stop.</span>
-          </div>
-          <div class="field">
-            <label for="w-ready-time">Getting-ready time (daily)</label>
-            <div class="input-group"><input type="number" id="w-ready-time" value="30" min="0" step="5" data-calc="wage"><span class="input-suffix">min</span></div>
-            <span class="field__hint">Time beyond what you'd spend if not working.</span>
-          </div>
-          <div class="field">
-            <label for="w-decomp-time">Decompression time (daily)</label>
-            <div class="input-group"><input type="number" id="w-decomp-time" value="45" min="0" step="5" data-calc="wage"><span class="input-suffix">min</span></div>
-            <span class="field__hint">Unwinding purely because work drained you — scrolling, drinks, TV you wouldn't watch otherwise.</span>
-          </div>
-          <div class="field">
-            <label for="w-overtime">Unpaid overtime (weekly)</label>
-            <div class="input-group"><input type="number" id="w-overtime" value="3" min="0" step="0.5" data-calc="wage"><span class="input-suffix">hrs</span></div>
-            <span class="field__hint">Emails after dinner, weekend Slack, "quick" Sunday planning.</span>
-          </div>
-          <h2 class="card__title card__title--spaced">Work Schedule</h2>
-          <div class="field">
-            <label for="w-workdays">Days worked per week</label>
-            <div class="input-group"><input type="number" id="w-workdays" value="5" min="1" max="7" step="1" data-calc="wage"><span class="input-suffix">days</span></div>
-            <span class="field__hint">Use 4 for a 4-day week, 3 for part-time, etc.</span>
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="w-vacation">Vacation days/yr</label>
-              <div class="input-group"><input type="number" id="w-vacation" value="10" min="0" max="60" step="1" data-calc="wage"></div>
+          <!-- Hidden Costs (Time) — starts closed -->
+          <details class="section-collapsible">
+            <summary class="section-toggle">
+              Hidden Costs — Time
+              <span class="section-toggle__summary" id="section-time-summary"></span>
+            </summary>
+            <div class="section-content">
+              <div class="field">
+                <label for="w-commute-time">Daily commute, round-trip</label>
+                <div class="input-group"><input type="number" id="w-commute-time" value="50" min="0" step="5" data-calc="wage"><span class="input-suffix">min</span></div>
+                <span class="field__hint">Include walking to/from car or transit stop.</span>
+              </div>
+              <div class="field">
+                <label for="w-ready-time">Getting-ready time (daily)</label>
+                <div class="input-group"><input type="number" id="w-ready-time" value="30" min="0" step="5" data-calc="wage"><span class="input-suffix">min</span></div>
+                <span class="field__hint">Time beyond what you'd spend if not working.</span>
+              </div>
+              <div class="field">
+                <label for="w-decomp-time">Decompression time (daily)</label>
+                <div class="input-group"><input type="number" id="w-decomp-time" value="45" min="0" step="5" data-calc="wage"><span class="input-suffix">min</span></div>
+                <span class="field__hint">Unwinding purely because work drained you — scrolling, drinks, TV you wouldn't watch otherwise.</span>
+              </div>
+              <div class="field">
+                <label for="w-overtime">Unpaid overtime (weekly)</label>
+                <div class="input-group"><input type="number" id="w-overtime" value="3" min="0" step="0.5" data-calc="wage"><span class="input-suffix">hrs</span></div>
+                <span class="field__hint">Emails after dinner, weekend Slack, "quick" Sunday planning.</span>
+              </div>
             </div>
-            <div class="field">
-              <label for="w-holidays">Holidays/yr</label>
-              <div class="input-group"><input type="number" id="w-holidays" value="8" min="0" max="20" step="1" data-calc="wage"></div>
+          </details>
+
+          <!-- Work Schedule — starts closed -->
+          <details class="section-collapsible">
+            <summary class="section-toggle">
+              Work Schedule
+              <span class="section-toggle__summary" id="section-schedule-summary"></span>
+            </summary>
+            <div class="section-content">
+              <div class="field-row">
+                <div class="field">
+                  <label for="w-workdays">Days/week</label>
+                  <div class="input-group"><input type="number" id="w-workdays" value="5" min="1" max="7" step="1" data-calc="wage"><span class="input-suffix">days</span></div>
+                  <span class="field__hint">4-day week, part-time, etc.</span>
+                </div>
+                <div class="field">
+                  <label for="w-hours-per-day">Hours/day (contracted)</label>
+                  <div class="input-group"><input type="number" id="w-hours-per-day" value="8" min="1" max="16" step="0.5" data-calc="wage"><span class="input-suffix">hrs</span></div>
+                  <span class="field__hint">Typical shift length. 8 is standard.</span>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="w-vacation">Vacation days/yr</label>
+                  <div class="input-group"><input type="number" id="w-vacation" value="10" min="0" max="60" step="1" data-calc="wage"></div>
+                </div>
+                <div class="field">
+                  <label for="w-holidays">Holidays/yr</label>
+                  <div class="input-group"><input type="number" id="w-holidays" value="8" min="0" max="20" step="1" data-calc="wage"></div>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="w-sick">Sick days/yr</label>
+                  <div class="input-group"><input type="number" id="w-sick" value="5" min="0" max="30" step="1" data-calc="wage"></div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="w-sick">Sick days/yr</label>
-              <div class="input-group"><input type="number" id="w-sick" value="5" min="0" max="30" step="1" data-calc="wage"></div>
+          </details>
+
+          <!-- Financial Reality — starts closed, optional -->
+          <details class="section-collapsible" id="financial-reality-section">
+            <summary class="section-toggle">
+              Financial Reality
+              <span class="section-toggle__summary section-toggle__optional">(optional)</span>
+            </summary>
+            <div class="section-content">
+              <p class="section-intro">What remains of your real wage after your fixed obligations? Filling these in reveals your true discretionary hourly wage.</p>
+              <div class="field">
+                <label for="w-rent">Monthly rent or mortgage</label>
+                <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-rent" value="0" min="0" step="100" data-calc="wage"></div>
+              </div>
+              <div class="field">
+                <label for="w-debt">Monthly debt payments</label>
+                <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-debt" value="0" min="0" step="50" data-calc="wage"></div>
+                <span class="field__hint">Car loans, student loans, credit cards.</span>
+              </div>
+              <div class="field">
+                <label for="w-insurance">Monthly insurance (non-payroll)</label>
+                <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-insurance" value="0" min="0" step="25" data-calc="wage"></div>
+                <span class="field__hint">Health, auto, life — not deducted from paycheck.</span>
+              </div>
+              <div class="field">
+                <label for="w-utilities">Monthly utilities</label>
+                <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-utilities" value="0" min="0" step="25" data-calc="wage"></div>
+                <span class="field__hint">Electric, gas, water, internet, phone.</span>
+              </div>
+              <div class="field">
+                <label for="w-subscriptions">Monthly subscriptions</label>
+                <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-subscriptions" value="0" min="0" step="10" data-calc="wage"></div>
+                <span class="field__hint">Streaming, software, gym, etc.</span>
+              </div>
+              <div class="field">
+                <label for="w-groceries">Monthly groceries</label>
+                <div class="input-group"><span class="input-prefix">$</span><input type="number" id="w-groceries" value="0" min="0" step="50" data-calc="wage"></div>
+                <span class="field__hint">Non-work food. Work meals are above.</span>
+              </div>
             </div>
-          </div>
+          </details>
         </div>
 
         <!-- Results column -->
@@ -250,6 +332,17 @@
             <div class="result-card__note" id="res-wage-gap-note"></div>
           </div>
 
+          <!-- Discretionary wage (hidden until Financial Reality filled) -->
+          <div class="result-card result-card--financial" id="financial-result" style="display:none">
+            <div class="result-card__label">Discretionary Hourly Wage</div>
+            <div class="result-card__value" id="res-discretionary-wage">—</div>
+            <div class="result-card__note" id="res-financial-context"></div>
+            <div class="financial-stress" id="stress-callout" style="display:none">
+              <div class="financial-stress__status" id="stress-status"></div>
+              <div class="financial-stress__message" id="stress-message"></div>
+            </div>
+          </div>
+
           <!-- Gap bar -->
           <div class="gap-visual" id="gap-visual">
             <div class="gap-visual__bar">
@@ -258,6 +351,18 @@
             <div class="gap-visual__labels">
               <span id="gap-label-real">Real: —</span>
               <span id="gap-label-adv">Advertised: —</span>
+            </div>
+          </div>
+
+          <!-- Life energy converter -->
+          <div class="energy-converter">
+            <div class="energy-converter__prompt">What does something cost in life energy?</div>
+            <div class="energy-converter__input">
+              <span class="input-prefix" style="padding:0 8px;color:var(--text-muted)">$</span>
+              <input type="number" id="energy-price-input" value="100" min="0" step="1" placeholder="100">
+            </div>
+            <div class="energy-converter__output">
+              That's <strong id="energy-hours-output">—</strong> of your life
             </div>
           </div>
 
@@ -281,9 +386,9 @@
             </div>
           </div>
 
-          <!-- Breakdown -->
-          <div class="breakdown">
-            <h3 class="breakdown__title">Full Breakdown</h3>
+          <!-- Breakdown (collapsible) -->
+          <details class="breakdown" id="breakdown-section">
+            <summary class="breakdown__title">Full Breakdown</summary>
             <div class="breakdown__row">
               <span>Gross annual salary <span class="tooltip" data-tip="Your total salary before any deductions — what your employer pays you.">ⓘ</span></span>
               <span id="bd-gross">—</span>
@@ -301,68 +406,68 @@
               <span id="bd-fica">—</span>
             </div>
             <div class="breakdown__row breakdown__row--accent">
-              <span>Total tax burden <span class="tooltip" data-tip="Federal + state + FICA combined. Does not include 401(k) or health insurance — those reduce taxable income separately.">ⓘ</span></span>
+              <span>Total tax burden <span class="tooltip" data-tip="Federal + state + FICA combined.">ⓘ</span></span>
               <span id="bd-tax-total">—</span>
             </div>
             <div class="breakdown__row">
-              <span>Annual take-home <span class="tooltip" data-tip="Gross salary minus all taxes. This is what actually hits your bank account each year.">ⓘ</span></span>
+              <span>Annual take-home <span class="tooltip" data-tip="Gross salary minus all taxes.">ⓘ</span></span>
               <span id="bd-takehome">—</span>
             </div>
             <div class="breakdown__divider"></div>
             <div class="breakdown__row breakdown__row--sub">
-              <span>Commute costs <span class="tooltip" data-tip="Daily commute cost × work days per year (after vacation/holidays/sick days).">ⓘ</span></span>
+              <span>Commute costs <span class="tooltip" data-tip="Daily commute cost × work days per year.">ⓘ</span></span>
               <span id="bd-commute">—</span>
             </div>
             <div class="breakdown__row breakdown__row--sub">
-              <span>Work clothing <span class="tooltip" data-tip="Monthly clothing cost × 12. Includes clothing you only buy because of work.">ⓘ</span></span>
+              <span>Work clothing <span class="tooltip" data-tip="Monthly clothing cost × 12.">ⓘ</span></span>
               <span id="bd-clothing">—</span>
             </div>
             <div class="breakdown__row breakdown__row--sub">
-              <span>Work meals <span class="tooltip" data-tip="Daily meal cost × work days per year. Only meals you wouldn't buy if you didn't work.">ⓘ</span></span>
+              <span>Work meals <span class="tooltip" data-tip="Daily meal cost × work days per year.">ⓘ</span></span>
               <span id="bd-meals">—</span>
             </div>
             <div class="breakdown__row breakdown__row--sub">
-              <span>Childcare <span class="tooltip" data-tip="Monthly childcare × 12. Only childcare you need because you're at work.">ⓘ</span></span>
+              <span>Childcare <span class="tooltip" data-tip="Monthly childcare × 12.">ⓘ</span></span>
               <span id="bd-childcare">—</span>
             </div>
             <div class="breakdown__row breakdown__row--sub">
-              <span>Other costs <span class="tooltip" data-tip="Other monthly work costs × 12. Professional dues, tools, second phone, continuing education.">ⓘ</span></span>
+              <span>Other costs <span class="tooltip" data-tip="Other monthly work costs × 12.">ⓘ</span></span>
               <span id="bd-other">—</span>
             </div>
             <div class="breakdown__row breakdown__row--accent">
-              <span>Total work costs <span class="tooltip" data-tip="Sum of all hidden money costs of employment. Subtracted from take-home to get actual earnings.">ⓘ</span></span>
+              <span>Total work costs <span class="tooltip" data-tip="Sum of all hidden money costs.">ⓘ</span></span>
               <span id="bd-costs-total">—</span>
             </div>
             <div class="breakdown__row breakdown__row--total">
-              <span>Actual annual earnings <span class="tooltip" data-tip="Take-home pay minus all work-related expenses. This is what your job actually earns you.">ⓘ</span></span>
+              <span>Actual annual earnings <span class="tooltip" data-tip="Take-home minus all work-related expenses.">ⓘ</span></span>
               <span id="bd-actual">—</span>
             </div>
             <div class="breakdown__divider"></div>
             <div class="breakdown__row">
-              <span>Contracted work hours <span class="tooltip" data-tip="Hours/week × work days per year ÷ 5. Standard scheduled work time.">ⓘ</span></span>
+              <span>Contracted work hours <span class="tooltip" data-tip="Hours/day × work days per year.">ⓘ</span></span>
               <span id="bd-contracted-hrs">—</span>
             </div>
             <div class="breakdown__row breakdown__row--sub">
-              <span>+ Commute time <span class="tooltip" data-tip="Daily commute minutes ÷ 60 × work days per year. Time spent traveling to/from work.">ⓘ</span></span>
+              <span>+ Commute time <span class="tooltip" data-tip="Daily commute minutes ÷ 60 × work days per year.">ⓘ</span></span>
               <span id="bd-commute-hrs">—</span>
             </div>
             <div class="breakdown__row breakdown__row--sub">
-              <span>+ Getting-ready time <span class="tooltip" data-tip="Daily getting-ready minutes ÷ 60 × work days per year. Time beyond your normal morning routine.">ⓘ</span></span>
+              <span>+ Getting-ready time <span class="tooltip" data-tip="Daily getting-ready minutes ÷ 60 × work days per year.">ⓘ</span></span>
               <span id="bd-ready-hrs">—</span>
             </div>
             <div class="breakdown__row breakdown__row--sub">
-              <span>+ Decompression time <span class="tooltip" data-tip="Daily decompression minutes ÷ 60 × work days per year. Time spent unwinding because work drained you.">ⓘ</span></span>
+              <span>+ Decompression time <span class="tooltip" data-tip="Daily decompression minutes ÷ 60 × work days per year.">ⓘ</span></span>
               <span id="bd-decomp-hrs">—</span>
             </div>
             <div class="breakdown__row breakdown__row--sub">
-              <span>+ Unpaid overtime <span class="tooltip" data-tip="Weekly unpaid overtime hours × weeks per year. After-hours emails, weekend Slack, Sunday planning.">ⓘ</span></span>
+              <span>+ Unpaid overtime <span class="tooltip" data-tip="Weekly unpaid overtime × working weeks per year.">ⓘ</span></span>
               <span id="bd-ot-hrs">—</span>
             </div>
             <div class="breakdown__row breakdown__row--total">
-              <span>Total work-related hours/yr <span class="tooltip" data-tip="Every hour your job consumes — contracted + commute + prep + decompression + overtime. Divides into actual earnings to give your real wage.">ⓘ</span></span>
+              <span>Total work-related hours/yr <span class="tooltip" data-tip="Every hour your job consumes — contracted + commute + prep + decompression + overtime.">ⓘ</span></span>
               <span id="bd-total-hrs">—</span>
             </div>
-          </div>
+          </details>
 
           <div class="tax-warning">
             <strong>⚠ Tax estimates are approximations</strong> using 2024/2025 federal brackets and simplified flat-rate state taxes. FICA is 7.65% (employee share). Consult a CPA for your specific situation.
@@ -379,7 +484,7 @@
           <div class="field">
             <label for="d-wage">Your real hourly wage</label>
             <div class="input-group"><span class="input-prefix">$</span><input type="number" id="d-wage" value="0" min="0" step="0.5" data-calc="decision"></div>
-            <span class="field__hint">Auto-filled from Tab 1 if you've calculated there.</span>
+            <span class="field__hint" id="d-wage-hint">Auto-filled from Tab 1 if you've calculated there.</span>
           </div>
           <div class="field">
             <label for="d-task">What's the task?</label>
@@ -396,7 +501,7 @@
           <div class="field">
             <label for="d-enjoyment">How do you feel about this task?</label>
             <select id="d-enjoyment" data-calc="decision">
-              <option value="hate">Hate it 😤</option>
+              <option value="avoid">Prefer to avoid 😩</option>
               <option value="dislike">Dislike it 😕</option>
               <option value="neutral" selected>Neutral 😐</option>
               <option value="enjoy">Enjoy it 😊</option>
@@ -438,6 +543,11 @@
 
     <!-- ═══ TAB 3: COMPARE TWO JOBS ═══ -->
     <section class="panel" id="panel-compare" role="tabpanel" hidden>
+      <!-- Mobile: scroll-to-results button -->
+      <button id="scroll-to-results-btn" class="scroll-to-results" hidden aria-label="Scroll to comparison results">
+        See Results ↓
+      </button>
+
       <div class="panel__grid panel__grid--jobs">
         <!-- Job A -->
         <div class="card" id="job-a-card">
@@ -456,17 +566,23 @@
           <div class="field"><label for="ja-overtime">Unpaid OT (weekly hrs)</label><div class="input-group"><input type="number" id="ja-overtime" value="3" min="0" step="0.5" data-calc="compare"><span class="input-suffix">hrs</span></div></div>
           <div class="field-row">
             <div class="field"><label for="ja-workdays">Days/week</label><div class="input-group"><input type="number" id="ja-workdays" value="5" min="1" max="7" step="1" data-calc="compare"></div></div>
-            <div class="field"><label for="ja-vacation">Vacation</label><div class="input-group"><input type="number" id="ja-vacation" value="10" min="0" max="60" data-calc="compare"></div></div>
+            <div class="field"><label for="ja-hours-per-day">Hrs/day</label><div class="input-group"><input type="number" id="ja-hours-per-day" value="8" min="1" max="16" step="0.5" data-calc="compare"></div></div>
           </div>
           <div class="field-row">
+            <div class="field"><label for="ja-vacation">Vacation</label><div class="input-group"><input type="number" id="ja-vacation" value="10" min="0" max="60" data-calc="compare"></div></div>
             <div class="field"><label for="ja-holidays">Holidays</label><div class="input-group"><input type="number" id="ja-holidays" value="8" min="0" max="20" data-calc="compare"></div></div>
+          </div>
+          <div class="field-row">
             <div class="field"><label for="ja-sick">Sick</label><div class="input-group"><input type="number" id="ja-sick" value="5" min="0" max="30" data-calc="compare"></div></div>
           </div>
         </div>
 
         <!-- Job B -->
         <div class="card" id="job-b-card">
-          <h2 class="card__title">Job B</h2>
+          <div class="card__header">
+            <h2 class="card__title">Job B</h2>
+            <button id="copy-from-a" class="copy-btn" title="Fill Job B with Job A values">📋 Copy from A</button>
+          </div>
           <div class="field"><label for="jb-label">Label</label><input type="text" id="jb-label" value="New Offer" class="text-input" data-calc="compare"></div>
           <div class="field"><label for="jb-salary">Annual salary</label><div class="input-group"><span class="input-prefix">$</span><input type="number" id="jb-salary" value="80000" min="0" step="1000" data-calc="compare"></div></div>
           <div class="field"><label for="jb-state">State</label><select id="jb-state" data-calc="compare"></select></div>
@@ -481,10 +597,13 @@
           <div class="field"><label for="jb-overtime">Unpaid OT (weekly hrs)</label><div class="input-group"><input type="number" id="jb-overtime" value="1" min="0" step="0.5" data-calc="compare"><span class="input-suffix">hrs</span></div></div>
           <div class="field-row">
             <div class="field"><label for="jb-workdays">Days/week</label><div class="input-group"><input type="number" id="jb-workdays" value="5" min="1" max="7" step="1" data-calc="compare"></div></div>
-            <div class="field"><label for="jb-vacation">Vacation</label><div class="input-group"><input type="number" id="jb-vacation" value="15" min="0" max="60" data-calc="compare"></div></div>
+            <div class="field"><label for="jb-hours-per-day">Hrs/day</label><div class="input-group"><input type="number" id="jb-hours-per-day" value="8" min="1" max="16" step="0.5" data-calc="compare"></div></div>
           </div>
           <div class="field-row">
+            <div class="field"><label for="jb-vacation">Vacation</label><div class="input-group"><input type="number" id="jb-vacation" value="15" min="0" max="60" data-calc="compare"></div></div>
             <div class="field"><label for="jb-holidays">Holidays</label><div class="input-group"><input type="number" id="jb-holidays" value="10" min="0" max="20" data-calc="compare"></div></div>
+          </div>
+          <div class="field-row">
             <div class="field"><label for="jb-sick">Sick</label><div class="input-group"><input type="number" id="jb-sick" value="5" min="0" max="30" data-calc="compare"></div></div>
           </div>
         </div>
@@ -516,15 +635,25 @@
       </div>
     </section>
 
+    <!-- About / SEO section -->
     <section class="about">
       <h2 class="about__title">Why This Calculator Exists</h2>
       <p class="about__text">Most people have never calculated what an hour of their life is actually worth. Not their salary divided by 2,080 — their real take-home pay, minus every hidden cost of working, divided by every hour their job consumes. Commute time. Getting-ready time. Decompression time. Work lunches. Professional clothes. Once you know this number, every spending decision changes. A $40 dinner isn't $40 — it's X hours of your life energy.</p>
-      <p class="about__text about__text--dim">Methodology inspired by <em>Your Money or Your Life</em> by Vicki Robin &amp; Joe Dominguez. Built by <a href="https://stygnus.substack.com" target="_blank" rel="noopener">Kenneth Cross</a>. Everything runs in your browser. Nothing is sent anywhere. No signup required. Tax estimates are approximations — consult a CPA for your specific situation.</p>
+      <p class="about__text">Methodology inspired by <em>Your Money or Your Life</em> by Vicki Robin &amp; Joe Dominguez. Built by <a href="https://stygnus.substack.com" target="_blank" rel="noopener">Kenneth Cross</a> — writer, developer, and parent in the Chicago suburbs who calculated his own real hourly wage and immediately regretted how much time he'd spent at Chuck E. Cheese. <a href="https://ko-fi.com/stygnus" target="_blank" rel="noopener">Support this project on Ko-fi</a>.</p>
+      <p class="about__text about__text--dim">Everything runs in your browser. Nothing is sent anywhere. No signup required. Tax estimates are approximations — consult a CPA for your specific situation. 🔒 <strong>Your financial data never leaves your device.</strong></p>
+      <p class="about__text about__text--dim">This real hourly wage calculator accounts for federal and state income taxes, FICA (Social Security and Medicare), daily commute costs and time, work clothing, work meals, childcare, decompression time, and unpaid overtime. The "Is It Worth My Time?" decision calculator helps you decide when to hire a professional versus doing it yourself — factoring in not just cost but how much you enjoy or dread the task. The job comparison tool reveals when a lower-salary remote position actually pays more per hour of life energy than a higher-salary office job.</p>
       <p class="about__text about__text--dim">
-        <a href="/about/">About &amp; Privacy Policy</a> &nbsp;·&nbsp;
+        <a href="/blog/">Blog</a> &nbsp;·&nbsp;
         <a href="/faq/">FAQ</a> &nbsp;·&nbsp;
-        <a href="/blog/">Blog</a>
+        <a href="/about/">About</a> &nbsp;·&nbsp;
+        <a href="/contact/">Contact</a> &nbsp;·&nbsp;
+        <a href="/privacy/">Privacy</a> &nbsp;·&nbsp;
+        <a href="/terms/">Terms</a>
       </p>
+
+      <div class="support-nudge">
+        <p>If this tool changed how you think about a purchase or decision, <a href="https://ko-fi.com/stygnus" target="_blank" rel="noopener">a coffee helps keep it free and ad-light</a>.</p>
+      </div>
     </section>
   </main>
 
