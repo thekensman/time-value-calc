@@ -46,15 +46,16 @@
     .site-header__top{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .site-header__brand{font-family:var(--font-mono);font-size:15px;color:var(--text);display:flex;align-items:center;gap:10px;flex-shrink:0}
     .site-header__brand:hover{text-decoration:none;color:var(--accent)}
-    .nav-toggle{display:none;background:none;border:1px solid var(--border);color:var(--muted);font-size:18px;padding:4px 10px;border-radius:3px;cursor:pointer;line-height:1}
-    .site-header__nav{display:flex;gap:18px;font-family:var(--font-mono);font-size:12px;align-items:center}
-    .site-header__nav a{color:var(--muted)}
-    .site-header__nav a:hover,.site-header__nav a.active{color:var(--accent);text-decoration:none}
-    @media(max-width:600px){
+    .nav-toggle{display:none;background:none;border:1px solid var(--border);color:var(--text);font-size:18px;padding:4px 10px;border-radius:3px;cursor:pointer;line-height:1}
+    .site-header__nav{display:flex;gap:4px;font-family:var(--font-mono);font-size:13px;align-items:center;flex-wrap:wrap}
+    .site-header__nav a{color:var(--text);padding:5px 10px;border-radius:3px;transition:background 0.15s,color 0.15s;text-decoration:none}
+    .site-header__nav a:hover{color:var(--accent);background:rgba(212,164,78,0.08)}
+    .site-header__nav a.active{color:var(--accent);background:rgba(212,164,78,0.12)}
+    @media(max-width:640px){
       .nav-toggle{display:block}
-      .site-header__nav{display:none;flex-direction:column;align-items:flex-start;gap:0;padding:14px 0 6px;border-top:1px solid var(--border);margin-top:14px}
+      .site-header__nav{display:none;flex-direction:column;align-items:stretch;gap:0;padding:10px 0 4px;border-top:1px solid var(--border);margin-top:14px}
       .site-header__nav.open{display:flex}
-      .site-header__nav a{padding:10px 0;width:100%;font-size:14px;border-bottom:1px solid var(--border)}
+      .site-header__nav a{padding:11px 4px;border-radius:0;border-bottom:1px solid var(--border);font-size:14px}
       .site-header__nav a:last-child{border-bottom:none}
     }
     .site-header__support{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
@@ -109,6 +110,7 @@
           <a href="/blog/">Blog</a>
           <a href="/faq/" class="active">FAQ</a>
           <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
           <a href="/privacy/">Privacy</a>
           <a href="/terms/">Terms</a>
         </nav>
@@ -193,6 +195,7 @@
       <a href="/blog/">Blog</a> &nbsp;·&nbsp;
       <a href="/faq/">FAQ</a> &nbsp;·&nbsp;
       <a href="/about/">About</a> &nbsp;·&nbsp;
+      <a href="/contact/">Contact</a> &nbsp;·&nbsp;
       <a href="/privacy/">Privacy</a> &nbsp;·&nbsp;
       <a href="/terms/">Terms</a>
     </div>

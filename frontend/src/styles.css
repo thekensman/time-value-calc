@@ -89,6 +89,30 @@ a:hover { text-decoration: underline; }
 }
 .header__support-link:hover { color: var(--accent); text-decoration: none; }
 
+/* ─── Header Site Nav ─── */
+.header__sitenav {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.header__sitenav a {
+  color: var(--text);
+  padding: 5px 10px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.header__sitenav a:hover {
+  color: var(--accent);
+  background: rgba(212, 164, 78, 0.08);
+  text-decoration: none;
+}
+
 /* ─── Header ─── */
 .header { border-bottom: 1px solid var(--border); padding: 36px 24px 28px; }
 .header__inner { max-width: var(--max-w); margin: 0 auto; }
