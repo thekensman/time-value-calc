@@ -75,7 +75,7 @@ export interface DecisionInputs {
   taskDescription: string;
   hoursToComplete: number;
   costToHire: number;
-  enjoyment: "hate" | "dislike" | "neutral" | "enjoy" | "love";
+  enjoyment: "avoid" | "dislike" | "neutral" | "enjoy" | "love";
 }
 
 export interface DecisionResult {
@@ -334,7 +334,7 @@ export function calculateRealWage(inputs: WageInputs): WageResult {
 // ─── Decision Calculator ─────────────────────────────────────
 
 const ENJOYMENT_MULTIPLIERS: Record<DecisionInputs["enjoyment"], number> = {
-  hate: 1.5,
+  avoid: 1.5,
   dislike: 1.2,
   neutral: 1.0,
   enjoy: 0.7,
@@ -360,7 +360,7 @@ export function calculateDecision(inputs: DecisionInputs): DecisionResult {
     verdict = "hire";
     savings = netDifference;
     if (isCloseCull) {
-      explanation = `Close call — hiring costs $${hireCost.toFixed(0)} but frees ${hoursToComplete} hour${hoursToComplete !== 1 ? "s" : ""}. Since you ${enjoyment === "hate" ? "hate" : enjoyment === "dislike" ? "dislike" : "feel neutral about"} this task, hiring is the better choice.`;
+      explanation = `Close call — hiring costs $${hireCost.toFixed(0)} but frees ${hoursToComplete} hour${hoursToComplete !== 1 ? "s" : ""}. Since you ${enjoyment === "avoid" ? "prefer to avoid" : enjoyment === "dislike" ? "dislike" : "feel neutral about"} this task, hiring is the better choice.`;
     } else {
       explanation = `Hiring saves you $${savings.toFixed(0)} in life-energy value. You get ${hoursToComplete} hour${hoursToComplete !== 1 ? "s" : ""} of your life back.`;
     }
@@ -531,14 +531,14 @@ export const DECISION_PRESETS: DecisionPreset[] = [
   { id: "mow", icon: "🌿", label: "Mow the lawn", hours: 1.5, cost: 50, defaultEnjoyment: "dislike" },
   { id: "clean", icon: "🏠", label: "Clean the house", hours: 3, cost: 120, defaultEnjoyment: "dislike" },
   { id: "cook", icon: "🍳", label: "Cook vs. order", hours: 1.5, cost: 35, defaultEnjoyment: "neutral" },
-  { id: "taxes", icon: "📋", label: "DIY taxes", hours: 8, cost: 250, defaultEnjoyment: "hate" },
+  { id: "taxes", icon: "📋", label: "DIY taxes", hours: 8, cost: 250, defaultEnjoyment: "avoid" },
   { id: "oil", icon: "🚗", label: "Oil change", hours: 1, cost: 45, defaultEnjoyment: "neutral" },
   { id: "grocery", icon: "🛒", label: "Grocery pickup", hours: 1, cost: 5, defaultEnjoyment: "neutral" },
   { id: "laundry", icon: "👔", label: "Laundry service", hours: 2, cost: 30, defaultEnjoyment: "dislike" },
   { id: "carwash", icon: "🚿", label: "Hand car wash", hours: 1, cost: 25, defaultEnjoyment: "neutral" },
   { id: "dogwalk", icon: "🐕", label: "Dog walker", hours: 0.75, cost: 20, defaultEnjoyment: "enjoy" },
-  { id: "assemble", icon: "🔧", label: "Furniture assembly", hours: 3, cost: 80, defaultEnjoyment: "hate" },
-  { id: "shovel", icon: "❄️", label: "Snow removal", hours: 1, cost: 40, defaultEnjoyment: "hate" },
+  { id: "assemble", icon: "🔧", label: "Furniture assembly", hours: 3, cost: 80, defaultEnjoyment: "avoid" },
+  { id: "shovel", icon: "❄️", label: "Snow removal", hours: 1, cost: 40, defaultEnjoyment: "avoid" },
   { id: "tutor", icon: "📚", label: "Tutor your kid", hours: 2, cost: 60, defaultEnjoyment: "neutral" },
 ];
 
