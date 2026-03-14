@@ -25,6 +25,7 @@ export interface WageInputs {
   dailyDecompressionMinutes: number;
   weeklyUnpaidOvertime: number;
   workDaysPerWeek: number;
+  contractedHoursPerDay: number;
   vacationDays: number;
   holidays: number;
   sickDays: number;
@@ -103,6 +104,7 @@ export interface JobInputs {
   dailyDecompressionMinutes: number;
   weeklyUnpaidOvertime: number;
   workDaysPerWeek: number;
+  contractedHoursPerDay: number;
   vacationDays: number;
   holidays: number;
   sickDays: number;
@@ -212,10 +214,13 @@ export function calculateRealWage(inputs: WageInputs): WageResult {
     dailyDecompressionMinutes,
     weeklyUnpaidOvertime,
     workDaysPerWeek,
+    contractedHoursPerDay: rawContractedHoursPerDay,
     vacationDays,
     holidays,
     sickDays,
   } = inputs;
+
+  const contractedHoursPerDay = rawContractedHoursPerDay || 8;
 
   // Step 1: Annual take-home pay
   const grossAnnual = annualGrossSalary;
@@ -249,7 +254,6 @@ export function calculateRealWage(inputs: WageInputs): WageResult {
   const actualAnnualEarnings = annualTakeHome - totalAnnualWorkCosts;
 
   // Step 3: Total work-related hours
-  const contractedHoursPerDay = 8;
   const workingWeeksPerYear =
     workDaysPerWeek > 0 ? workingDaysPerYear / workDaysPerWeek : 0;
 
@@ -273,8 +277,10 @@ export function calculateRealWage(inputs: WageInputs): WageResult {
       ? actualAnnualEarnings / totalWorkHoursPerYear
       : 0;
 
-  // Step 5: Advertised hourly wage
-  const advertisedHourlyWage = grossAnnual / 2080;
+  // Step 5: Advertised hourly wage (based on user's contracted schedule)
+  const scheduledHoursPerWeek = contractedHoursPerDay * workDaysPerWeek;
+  const advertisedHourlyWage =
+    scheduledHoursPerWeek > 0 ? grossAnnual / (scheduledHoursPerWeek * 52) : 0;
 
   // Step 6: Gap
   const wageGapDollars = advertisedHourlyWage - realHourlyWage;
@@ -402,6 +408,7 @@ export function compareJobs(
     dailyDecompressionMinutes: job.dailyDecompressionMinutes,
     weeklyUnpaidOvertime: job.weeklyUnpaidOvertime,
     workDaysPerWeek: job.workDaysPerWeek || 5,
+    contractedHoursPerDay: job.contractedHoursPerDay || 8,
     vacationDays: job.vacationDays,
     holidays: job.holidays,
     sickDays: job.sickDays,
@@ -434,6 +441,81 @@ export function compareJobs(
   };
 }
 
+// ─── Financial Context ───────────────────────────────────────
+
+export interface FinancialContextInputs {
+  monthlyRent: number;
+  monthlyDebtPayments: number;
+  monthlyInsurance: number;
+  monthlyUtilities: number;
+  monthlySubscriptions: number;
+  monthlyGroceries: number;
+}
+
+export interface FinancialContextResult {
+  totalMonthlyObligations: number;
+  annualFixedCosts: number;
+  monthlyAfterFixed: number;
+  annualAfterFixed: number;
+  discretionaryHourlyWage: number;
+  discretionaryPercentOfReal: number;
+  financialStressLevel: "comfortable" | "stable" | "stressed" | "critical";
+  monthsOfSavingsAtCurrentRate: number;
+}
+
+export function calculateFinancialContext(
+  wageResult: WageResult,
+  context: FinancialContextInputs
+): FinancialContextResult {
+  const totalMonthlyObligations =
+    context.monthlyRent +
+    context.monthlyDebtPayments +
+    context.monthlyInsurance +
+    context.monthlyUtilities +
+    context.monthlySubscriptions +
+    context.monthlyGroceries;
+
+  const annualFixedCosts = totalMonthlyObligations * 12;
+  const monthlyTakeHome = wageResult.actualAnnualEarnings / 12;
+  const monthlyAfterFixed = monthlyTakeHome - totalMonthlyObligations;
+  const annualAfterFixed = wageResult.actualAnnualEarnings - annualFixedCosts;
+
+  const discretionaryHourlyWage =
+    wageResult.totalWorkHoursPerYear > 0
+      ? annualAfterFixed / wageResult.totalWorkHoursPerYear
+      : 0;
+
+  const discretionaryPercentOfReal =
+    wageResult.realHourlyWage > 0
+      ? discretionaryHourlyWage / wageResult.realHourlyWage
+      : 0;
+
+  let financialStressLevel: "comfortable" | "stable" | "stressed" | "critical";
+  if (monthlyAfterFixed >= monthlyTakeHome * 0.3) {
+    financialStressLevel = "comfortable";
+  } else if (monthlyAfterFixed >= 0) {
+    financialStressLevel = "stable";
+  } else if (monthlyAfterFixed > -monthlyTakeHome * 0.1) {
+    financialStressLevel = "stressed";
+  } else {
+    financialStressLevel = "critical";
+  }
+
+  const monthsOfSavingsAtCurrentRate =
+    monthlyAfterFixed > 0 ? monthlyTakeHome / monthlyAfterFixed : 0;
+
+  return {
+    totalMonthlyObligations,
+    annualFixedCosts,
+    monthlyAfterFixed,
+    annualAfterFixed,
+    discretionaryHourlyWage,
+    discretionaryPercentOfReal,
+    financialStressLevel,
+    monthsOfSavingsAtCurrentRate,
+  };
+}
+
 // ─── Decision Presets ────────────────────────────────────────
 
 export interface DecisionPreset {
@@ -452,6 +534,12 @@ export const DECISION_PRESETS: DecisionPreset[] = [
   { id: "taxes", icon: "📋", label: "DIY taxes", hours: 8, cost: 250, defaultEnjoyment: "hate" },
   { id: "oil", icon: "🚗", label: "Oil change", hours: 1, cost: 45, defaultEnjoyment: "neutral" },
   { id: "grocery", icon: "🛒", label: "Grocery pickup", hours: 1, cost: 5, defaultEnjoyment: "neutral" },
+  { id: "laundry", icon: "👔", label: "Laundry service", hours: 2, cost: 30, defaultEnjoyment: "dislike" },
+  { id: "carwash", icon: "🚿", label: "Hand car wash", hours: 1, cost: 25, defaultEnjoyment: "neutral" },
+  { id: "dogwalk", icon: "🐕", label: "Dog walker", hours: 0.75, cost: 20, defaultEnjoyment: "enjoy" },
+  { id: "assemble", icon: "🔧", label: "Furniture assembly", hours: 3, cost: 80, defaultEnjoyment: "hate" },
+  { id: "shovel", icon: "❄️", label: "Snow removal", hours: 1, cost: 40, defaultEnjoyment: "hate" },
+  { id: "tutor", icon: "📚", label: "Tutor your kid", hours: 2, cost: 60, defaultEnjoyment: "neutral" },
 ];
 
 // ─── State Tax Rates ─────────────────────────────────────────
